@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Setup Guide</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8; /* Google Blue */
+            --bg-color: #f8f9fa;      /* Light Gray Background */
+            --surface-color: #ffffff;
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --code-bg: #f1f3f4;
+            --border-radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px 20px;
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            min-height: 600px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 10px;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Navigation / Toggle */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #dadce0;
+            margin-top: 20px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-color);
+            background-color: rgba(26, 115, 232, 0.04);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 25px;
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            color: #d93025; /* Google Red for code snippets snippet look */
+        }
+
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            color: #37474f;
+            display: block;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        /* Action Buttons */
+        .cta-container {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #dadce0;
+            text-align: right;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 24px; /* Pill shape */
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: box-shadow 0.2s, background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background-color: #1765cc;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid #dadce0;
+            margin-right: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f1f3f4;
+        }
+
+        /* Icon Helper */
+        .icon {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header id="main-header">
+        <h1>Flutter Setup Guide</h1>
+        <p class="subtitle">Wähle dein Betriebssystem für den Schnelleinstieg</p>
+    </header>
+
+    <nav class="nav-tabs" id="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('windows')">Windows</button>
+        <button class="tab-btn" onclick="switchTab('mac')">macOS</button>
+    </nav>
+
+    <div id="windows" class="content-section active">
+        <h2>Windows Environment</h2>
+        <p>Der direkte Weg zur Flutter-Entwicklung auf Windows.</p>
+
+        <h3>1. Vorbereitung</h3>
+        <ul>
+            <li>Installiere <strong>Git for Windows</strong>. Wähle im Setup "Use Git from the Windows Command Prompt".</li>
+            <li>Lade <strong>Visual Studio Code</strong> herunter und installiere es.</li>
+        </ul>
+
+        <h3>2. Flutter SDK Einrichtung</h3>
+        <ol>
+            <li>Lade das Flutter SDK (Stable Zip) von der offiziellen Website.</li>
+            <li>Entpacke es z.B. nach <code>C:\src\flutter</code>.</li>
+            <li><strong>Path Variable:</strong> Suche in Windows nach "Umgebungsvariablen", bearbeite "Path" und füge <code>C:\src\flutter\bin</code> hinzu.</li>
+        </ol>
+
+        <h3>3. VS Code Extensions</h3>
+        <ul>
+            <li>Öffne VS Code, gehe zum Extension-Marktplatz.</li>
+            <li>Suche und installiere die Extension <strong>Flutter</strong> (Dart kommt automatisch mit).</li>
+        </ul>
+
+        <h3>4. Verifizierung</h3>
+        <p>Öffne ein Terminal und führe aus:</p>
+        <span class="code-block">flutter doctor</span>
+
+        <div class="cta-container">
+            <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
+        </div>
+    </div>
+
+    <div id="mac" class="content-section">
+        <h2>macOS Environment</h2>
+        <p>Optimiere deinen Mac für die App-Entwicklung mit Flutter.</p>
+
+        <h3>1. Vorbereitung</h3>
+        <ul>
+            <li>Installiere <strong>Xcode</strong> aus dem App Store (wichtig für iOS-Simulator).</li>
+            <li>Öffne Xcode einmal, um die Lizenzbedingungen zu bestätigen.</li>
+            <li>Installiere <strong>Visual Studio Code</strong>.</li>
+        </ul>
+
+        <h3>2. Flutter SDK Einrichtung</h3>
+        <ol>
+            <li>Lade das Flutter SDK für macOS herunter.</li>
+            <li>Entpacke es in deinen Home-Ordner, z.B. <code>~/development/flutter</code>.</li>
+            <li><strong>Path Update:</strong> Füge dies zu deiner <code>.zshrc</code> oder <code>.bash_profile</code> hinzu:</li>
+        </ol>
+        <span class="code-block">export PATH="$PATH:$HOME/development/flutter/bin"</span>
+
+        <h3>3. Extensions & CocoaPods</h3>
+        <ul>
+            <li>Installiere die <strong>Flutter</strong> Extension in VS Code.</li>
+            <li>Installiere CocoaPods für iOS-Abhängigkeiten via Terminal: <br><code>sudo gem install cocoapods</code></li>
+        </ul>
+
+        <h3>4. Verifizierung</h3>
+        <p>Prüfe deine Installation im Terminal mit:</p>
+        <span class="code-block">flutter doctor</span>
+
+        <div class="cta-container">
+            <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
+        </div>
+    </div>
+
+    <div id="github" class="content-section">
+        <h2>GitHub & VS Code Integration</h2>
+        <p>Versionsverwaltung ist kein Luxus, sondern Pflicht. So geht's.</p>
+
+        <h3>1. Git Konfiguration</h3>
+        <p>Öffne das Terminal in VS Code und setze deine Identität:</p>
+        <span class="code-block">
+git config --global user.name "Dein Name"
+git config --global user.email "mail@example.com"
+        </span>
+
+        <h3>2. Account verbinden</h3>
+        <ul>
+            <li>Klicke in VS Code unten links auf das <strong>Profil-Icon</strong>.</li>
+            <li>Wähle "Sign in to Sync Settings" (oder GitHub) und autorisiere den Browser-Zugriff.</li>
+        </ul>
+
+        <h3>3. Der Workflow</h3>
+        <ol>
+            <li>Öffne dein fertiges Flutter-Projekt.</li>
+            <li>Gehe zum <strong>Source Control Tab</strong> (links).</li>
+            <li>Klicke auf "Publish to GitHub". VS Code erstellt das Repo, macht den ersten Commit und lädt alles hoch.</li>
+        </ol>
+
+        <div class="cta-container">
+            <button class="btn btn-secondary" onclick="goBack()">Zurück zur Auswahl</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let lastTab = 'windows'; // Merken, woher der User kam
+
+    function switchTab(tabName) {
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+        // Deactivate all buttons
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+        // Show selected
+        document.getElementById(tabName).classList.add('active');
+        
+        // Activate button
+        const btn = document.querySelector(`button[onclick="switchTab('${tabName}')"]`);
+        if(btn) btn.classList.add('active');
+
+        // Show Header & Nav (falls wir von GitHub zurückkommen)
+        document.getElementById('nav-tabs').style.display = 'flex';
+        document.getElementById('main-header').style.display = 'block';
+
+        lastTab = tabName;
+    }
+
+    function showGithubPage() {
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+        
+        // Hide Nav Tabs to simulate a "new page" feel
+        document.getElementById('nav-tabs').style.display = 'none';
+        
+        // Optional: Change Header text or hide header
+        document.getElementById('main-header').style.display = 'none';
+
+        // Show GitHub
+        document.getElementById('github').classList.add('active');
+        
+        // Scroll to top smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+        switchTab(lastTab);
+    }
+</script>
+
+</body>
+</html>
