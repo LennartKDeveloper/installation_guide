@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flutter Setup Guide</title>
     <style>
         :root {
-            --primary-color: #1a73e8; /* Google Blue */
-            --bg-color: #f8f9fa;      /* Light Gray Background */
+            --primary-color: #1a73e8;
+            /* Google Blue */
+            --bg-color: #f8f9fa;
+            /* Light Gray Background */
             --surface-color: #ffffff;
             --text-primary: #202124;
             --text-secondary: #5f6368;
             --code-bg: #f1f3f4;
             --border-radius: 12px;
-            --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         }
 
         body {
@@ -111,8 +114,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h2 {
@@ -127,7 +137,8 @@
             color: var(--text-primary);
         }
 
-        ul, ol {
+        ul,
+        ol {
             padding-left: 20px;
             color: var(--text-secondary);
         }
@@ -136,13 +147,13 @@
             margin-bottom: 10px;
         }
 
-        /* Link Styling Hinzugefügt */
+
         a {
-            color: var(--primary-color);
+            color: inherit;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: bolder;
         }
-        
+
         a:hover {
             text-decoration: underline;
         }
@@ -153,7 +164,8 @@
             border-radius: 4px;
             font-family: 'Roboto Mono', monospace;
             font-size: 0.9em;
-            color: #d93025; /* Google Red for code snippets snippet look */
+            color: #d93025;
+            /* Google Red for code snippets snippet look */
         }
 
         .code-block {
@@ -181,17 +193,18 @@
             background-color: var(--primary-color);
             color: white;
             padding: 10px 24px;
-            border-radius: 24px; /* Pill shape */
+            border-radius: 24px;
+            /* Pill shape */
             text-decoration: none;
             font-weight: 500;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             transition: box-shadow 0.2s, background-color 0.2s;
             cursor: pointer;
             border: none;
         }
 
         .btn:hover {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             background-color: #1765cc;
         }
 
@@ -201,7 +214,7 @@
             border: 1px solid #dadce0;
             margin-right: 10px;
         }
-        
+
         .btn-secondary:hover {
             background-color: #f1f3f4;
         }
@@ -211,163 +224,179 @@
             margin-right: 8px;
             vertical-align: middle;
         }
-
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <header id="main-header">
-        <h1>Flutter Setup Guide</h1>
-        <p class="subtitle">Wähle dein Betriebssystem für den Schnelleinstieg</p>
-    </header>
+    <div class="container">
+        <header id="main-header">
+            <h1>Flutter Setup Guide</h1>
+            <p class="subtitle">Wähle dein Betriebssystem für den Schnelleinstieg</p>
+        </header>
 
-    <nav class="nav-tabs" id="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('windows')">Windows</button>
-        <button class="tab-btn" onclick="switchTab('mac')">macOS</button>
-    </nav>
+        <nav class="nav-tabs" id="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('windows')">Windows</button>
+            <button class="tab-btn" onclick="switchTab('mac')">macOS</button>
+        </nav>
 
-    <div id="windows" class="content-section active">
-        <h2>Windows Environment</h2>
-        <p>Der direkte Weg zur Flutter-Entwicklung auf Windows.</p>
+        <div id="windows" class="content-section active">
+            <h2>Windows Environment</h2>
+            <p>Der direkte Weg zur Flutter-Entwicklung auf Windows.</p>
 
-        <h3>1. Vorbereitung</h3>
-        <ul>
-            <li>Installiere <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener noreferrer">Git for Windows</a>. Wähle im Setup "Use Git from the Windows Command Prompt".</li>
-            <li>Lade <strong>Visual Studio Code</strong> herunter und installiere es.</li>
-        </ul>
+            <h3>1. Vorbereitung</h3>
+            <ul>
+                <li>Installiere <a href="https://git-scm.com/install/windows" target="_blank"
+                        rel="noopener noreferrer">Git for Windows</a>. Wähle im Setup "Use Git from the Windows Command
+                    Prompt".</li>
+                <li>Lade <a href="https://code.visualstudio.com/download" target="_blank"
+                        rel="noopener noreferrer">Visual Studio Code</a> herunter und installiere es.</li>
+            </ul>
 
-        <h3>2. Flutter SDK Einrichtung</h3>
-        <ol>
-            <li>Lade das Flutter SDK (Stable Zip) von der offiziellen Website.</li>
-            <li>Entpacke es z.B. nach <code>C:\src\flutter</code>.</li>
-            <li><strong>Path Variable:</strong> Suche in Windows nach "Umgebungsvariablen", bearbeite "Path" und füge <code>C:\src\flutter\bin</code> hinzu.</li>
-        </ol>
+            <h3>2. Flutter SDK Einrichtung</h3>
+            <ol>
+                <li>Lade das Flutter SDK (Stable Zip) von der offiziellen <a
+                        href="https://docs.flutter.dev/install/manual" target="_blank"
+                        rel="noopener noreferrer">Website</a>.</li>
+                <li>Entpacke es z.B. nach <code>C:\src\flutter</code>.</li>
+                <li><a href="https://learn.microsoft.com/de-de/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)"
+                        target="_blank" rel="noopener noreferrer">Path Variablen</a>: Suche in Windows nach
+                    "Umgebungsvariablen", bearbeite "Path" und
+                    füge <code>C:\src\flutter\bin</code> hinzu.</li>
+            </ol>
 
-        <h3>3. VS Code Extensions</h3>
-        <ul>
-            <li>Öffne VS Code, gehe zum Extension-Marktplatz.</li>
-            <li>Suche und installiere die Extension <strong>Flutter</strong> (Dart kommt automatisch mit).</li>
-        </ul>
+            <h3>3. VS Code Extensions</h3>
+            <ul>
+                <li>Öffne VS Code, gehe zum Extension-Marktplatz.</li>
+                <li>Suche und installiere die Extension <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+" target="_blank" rel="noopener noreferrer">Flutter</a> (Dart kommt automatisch mit).</li>
+            </ul>
+            <h3>4. Verifizierung</h3>
+            <p>Öffne ein Terminal und führe aus:</p>
+            <span class="code-block">flutter doctor</span>
+            <p>Wenn der Befehl ohne Fehlermeldung durchläuft, war die Installation erfolgreich. Der Befehl zeigt dir
+                jetzt außerdem eine Liste an zusätzlich empfohlenen oder notwendigen Installationsschritten an.</p>
 
-        <h3>4. Verifizierung</h3>
-        <p>Öffne ein Terminal und führe aus:</p>
-        <span class="code-block">flutter doctor</span>
-
-        <div class="cta-container">
-            <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
+            <div class="cta-container">
+                <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
+            </div>
         </div>
+
+        <div id="mac" class="content-section">
+            <h2>macOS Environment</h2>
+            <p>Optimiere deinen Mac für die App-Entwicklung mit Flutter.</p>
+
+            <h3>1. Vorbereitung</h3>
+            <ul>
+                <li>Installiere <strong>Xcode</strong> aus dem App Store (wichtig für iOS-Simulator).</li>
+                <li>Öffne Xcode einmal, um die Lizenzbedingungen zu bestätigen.</li>
+                <li>Installiere <strong>Visual Studio Code</strong>.</li>
+            </ul>
+
+            <h3>2. Flutter SDK Einrichtung</h3>
+            <ol>
+                <li>Lade das Flutter SDK für macOS herunter.</li>
+                <li>Entpacke es in deinen Home-Ordner, z.B. <code>~/development/flutter</code>.</li>
+                <li><strong>Path Update:</strong> Füge dies zu deiner <code>.zshrc</code> oder
+                    <code>.bash_profile</code> hinzu:
+                </li>
+            </ol>
+            <span class="code-block">export PATH="$PATH:$HOME/development/flutter/bin"</span>
+
+            <h3>3. Extensions & CocoaPods</h3>
+            <ul>
+                <li>Installiere die <strong>Flutter</strong> Extension in VS Code.</li>
+                <li>Installiere CocoaPods für iOS-Abhängigkeiten via Terminal:
+                    <br><code>sudo gem install cocoapods</code>
+                </li>
+            </ul>
+
+            <h3>4. Verifizierung</h3>
+            <p>Prüfe deine Installation im Terminal mit:</p>
+            <span class="code-block">flutter doctor</span>
+
+            <div class="cta-container">
+                <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
+            </div>
+        </div>
+
+        <div id="github" class="content-section">
+            <h2>GitHub & VS Code Integration</h2>
+            <p>Versionsverwaltung ist kein Luxus, sondern Pflicht. So geht's.</p>
+
+            <h3>1. Git Konfiguration</h3>
+            <p>Öffne das Terminal in VS Code und setze deine Identität:</p>
+            <span class="code-block">
+                git config --global user.name "Dein Name"
+                git config --global user.email "mail@example.com"
+            </span>
+
+            <h3>2. Account verbinden</h3>
+            <ul>
+                <li>Klicke in VS Code unten links auf das <strong>Profil-Icon</strong>.</li>
+                <li>Wähle "Sign in to Sync Settings" (oder GitHub) und autorisiere den Browser-Zugriff.</li>
+            </ul>
+
+            <h3>3. Der Workflow</h3>
+            <ol>
+                <li>Öffne dein fertiges Flutter-Projekt.</li>
+                <li>Gehe zum <strong>Source Control Tab</strong> (links).</li>
+                <li>Klicke auf "Publish to GitHub". VS Code erstellt das Repo, macht den ersten Commit und lädt alles
+                    hoch.</li>
+            </ol>
+
+            <div class="cta-container">
+                <button class="btn btn-secondary" onclick="goBack()">Zurück zur Auswahl</button>
+            </div>
+        </div>
+
     </div>
 
-    <div id="mac" class="content-section">
-        <h2>macOS Environment</h2>
-        <p>Optimiere deinen Mac für die App-Entwicklung mit Flutter.</p>
+    <script>
+        let lastTab = 'windows'; // Merken, woher der User kam
 
-        <h3>1. Vorbereitung</h3>
-        <ul>
-            <li>Installiere <strong>Xcode</strong> aus dem App Store (wichtig für iOS-Simulator).</li>
-            <li>Öffne Xcode einmal, um die Lizenzbedingungen zu bestätigen.</li>
-            <li>Installiere <strong>Visual Studio Code</strong>.</li>
-        </ul>
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
 
-        <h3>2. Flutter SDK Einrichtung</h3>
-        <ol>
-            <li>Lade das Flutter SDK für macOS herunter.</li>
-            <li>Entpacke es in deinen Home-Ordner, z.B. <code>~/development/flutter</code>.</li>
-            <li><strong>Path Update:</strong> Füge dies zu deiner <code>.zshrc</code> oder <code>.bash_profile</code> hinzu:</li>
-        </ol>
-        <span class="code-block">export PATH="$PATH:$HOME/development/flutter/bin"</span>
+            // Show selected
+            document.getElementById(tabName).classList.add('active');
 
-        <h3>3. Extensions & CocoaPods</h3>
-        <ul>
-            <li>Installiere die <strong>Flutter</strong> Extension in VS Code.</li>
-            <li>Installiere CocoaPods für iOS-Abhängigkeiten via Terminal: <br><code>sudo gem install cocoapods</code></li>
-        </ul>
+            // Activate button
+            const btn = document.querySelector(`button[onclick="switchTab('${tabName}')"]`);
+            if (btn) btn.classList.add('active');
 
-        <h3>4. Verifizierung</h3>
-        <p>Prüfe deine Installation im Terminal mit:</p>
-        <span class="code-block">flutter doctor</span>
+            // Show Header & Nav (falls wir von GitHub zurückkommen)
+            document.getElementById('nav-tabs').style.display = 'flex';
+            document.getElementById('main-header').style.display = 'block';
 
-        <div class="cta-container">
-            <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
-        </div>
-    </div>
+            lastTab = tabName;
+        }
 
-    <div id="github" class="content-section">
-        <h2>GitHub & VS Code Integration</h2>
-        <p>Versionsverwaltung ist kein Luxus, sondern Pflicht. So geht's.</p>
+        function showGithubPage() {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
 
-        <h3>1. Git Konfiguration</h3>
-        <p>Öffne das Terminal in VS Code und setze deine Identität:</p>
-        <span class="code-block">
-git config --global user.name "Dein Name"
-git config --global user.email "mail@example.com"
-        </span>
+            // Hide Nav Tabs to simulate a "new page" feel
+            document.getElementById('nav-tabs').style.display = 'none';
 
-        <h3>2. Account verbinden</h3>
-        <ul>
-            <li>Klicke in VS Code unten links auf das <strong>Profil-Icon</strong>.</li>
-            <li>Wähle "Sign in to Sync Settings" (oder GitHub) und autorisiere den Browser-Zugriff.</li>
-        </ul>
+            // Optional: Change Header text or hide header
+            document.getElementById('main-header').style.display = 'none';
 
-        <h3>3. Der Workflow</h3>
-        <ol>
-            <li>Öffne dein fertiges Flutter-Projekt.</li>
-            <li>Gehe zum <strong>Source Control Tab</strong> (links).</li>
-            <li>Klicke auf "Publish to GitHub". VS Code erstellt das Repo, macht den ersten Commit und lädt alles hoch.</li>
-        </ol>
+            // Show GitHub
+            document.getElementById('github').classList.add('active');
 
-        <div class="cta-container">
-            <button class="btn btn-secondary" onclick="goBack()">Zurück zur Auswahl</button>
-        </div>
-    </div>
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-</div>
-
-<script>
-    let lastTab = 'windows'; // Merken, woher der User kam
-
-    function switchTab(tabName) {
-        // Hide all sections
-        document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-        // Deactivate all buttons
-        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-
-        // Show selected
-        document.getElementById(tabName).classList.add('active');
-        
-        // Activate button
-        const btn = document.querySelector(`button[onclick="switchTab('${tabName}')"]`);
-        if(btn) btn.classList.add('active');
-
-        // Show Header & Nav (falls wir von GitHub zurückkommen)
-        document.getElementById('nav-tabs').style.display = 'flex';
-        document.getElementById('main-header').style.display = 'block';
-
-        lastTab = tabName;
-    }
-
-    function showGithubPage() {
-        // Hide all sections
-        document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-        
-        // Hide Nav Tabs to simulate a "new page" feel
-        document.getElementById('nav-tabs').style.display = 'none';
-        
-        // Optional: Change Header text or hide header
-        document.getElementById('main-header').style.display = 'none';
-
-        // Show GitHub
-        document.getElementById('github').classList.add('active');
-        
-        // Scroll to top smoothly
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function goBack() {
-        switchTab(lastTab);
-    }
-</script>
+        function goBack() {
+            switchTab(lastTab);
+        }
+    </script>
 
 </body>
+
 </html>
