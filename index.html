@@ -149,7 +149,8 @@
 
 
         a {
-            color: inherit;
+            color: var(--primary-color);
+            /* color: inherit; */
             text-decoration: none;
             font-weight: bolder;
         }
@@ -274,7 +275,8 @@
             <h3>4. Verifizierung</h3>
             <p>Öffne ein Terminal und führe aus:</p>
             <span class="code-block">flutter doctor</span>
-            <p>Wenn der Befehl ohne Fehlermeldung durchläuft, war die Installation erfolgreich. Der Befehl zeigt dir
+            <p>Wenn der Befehl ohne Fehlermeldung durchläuft, war die Installation erfolgreich.</p>
+            <p> Der Befehl zeigt dir
                 jetzt außerdem eine Liste an zusätzlich empfohlenen oder notwendigen Installationsschritten an.</p>
 
             <div class="cta-container">
@@ -284,28 +286,35 @@
 
         <div id="mac" class="content-section">
             <h2>macOS Environment</h2>
-            <p>Optimiere deinen Mac für die App-Entwicklung mit Flutter.</p>
+            <p>App-Entwicklung mit Flutter auf dem Mac.</p>
 
             <h3>1. Vorbereitung</h3>
             <ul>
-                <li>Installiere <strong>Xcode</strong> aus dem App Store (wichtig für iOS-Simulator).</li>
+
+                <li>Installiere <a href="https://apps.apple.com/de/app/xcode/id497799835?l=en-GB&mt=12
+" target="_blank" rel="noopener noreferrer">Xcode</a> aus dem App Store (wichtig für iOS-Simulator).</li>
                 <li>Öffne Xcode einmal, um die Lizenzbedingungen zu bestätigen.</li>
-                <li>Installiere <strong>Visual Studio Code</strong>.</li>
+                <li>Installiere <a href="https://code.visualstudio.com/download" target="_blank"
+                        rel="noopener noreferrer">Visual Studio Code</a>.</li>
             </ul>
 
             <h3>2. Flutter SDK Einrichtung</h3>
             <ol>
-                <li>Lade das Flutter SDK für macOS herunter.</li>
+                <li>Lade das <a href="https://docs.flutter.dev/install/manual" target="_blank"
+                        rel="noopener noreferrer">Flutter SDK</a> für macOS herunter.</li>
                 <li>Entpacke es in deinen Home-Ordner, z.B. <code>~/development/flutter</code>.</li>
-                <li><strong>Path Update:</strong> Füge dies zu deiner <code>.zshrc</code> oder
-                    <code>.bash_profile</code> hinzu:
+                <li><strong>Path Update:</strong> Füge dies zu deinen Path Variablen hinzu, in dem du folgenden Befehl
+                    in deinem
+                    Terminal
+                    startest:
                 </li>
             </ol>
             <span class="code-block">export PATH="$PATH:$HOME/development/flutter/bin"</span>
 
             <h3>3. Extensions & CocoaPods</h3>
             <ul>
-                <li>Installiere die <strong>Flutter</strong> Extension in VS Code.</li>
+                <li>Installiere die <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+" target="_blank" rel="noopener noreferrer">Flutter</a> Extension in VS Code.</li>
                 <li>Installiere CocoaPods für iOS-Abhängigkeiten via Terminal:
                     <br><code>sudo gem install cocoapods</code>
                 </li>
@@ -314,7 +323,9 @@
             <h3>4. Verifizierung</h3>
             <p>Prüfe deine Installation im Terminal mit:</p>
             <span class="code-block">flutter doctor</span>
-
+            <p>Wenn der Befehl ohne Fehlermeldung durchläuft, war die Installation erfolgreich.</p>
+            <p> Der Befehl zeigt dir
+                jetzt außerdem eine Liste an zusätzlich empfohlenen oder notwendigen Installationsschritten an.</p>
             <div class="cta-container">
                 <button class="btn" onclick="showGithubPage()">Bonus: GitHub Einrichtung &rarr;</button>
             </div>
