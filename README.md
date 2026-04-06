@@ -1,6 +1,6 @@
 # 💙 Flutter Setup Guide
 
-![GDG Essen](https://img.shields.io/badge/Community-GDG%20Essen-blue?style=for-the-badge&logo=google)
+![GDG Essen](https://img.shields.io/badge/Community-GDGoC%20Essen-blue?style=for-the-badge&logo=google)
 
 A clean and simple web guide designed to help developers get their machines ready for Flutter development as quickly as possible.
 
